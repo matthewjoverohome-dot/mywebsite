@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .banner-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .smooth-transition {
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #ff0000 !important;
+    }
+    
+    .page {
+      display: none;
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    
+    .page.active {
+      display: block;
+      animation: panIn 0.6s ease-out forwards;
+    }
+    
+    @keyframes panIn {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .project-card {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .project-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .project-card:hover .project-title {
+      opacity: 1;
+    }
+    
+    .project-card-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-label {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 8px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 0;
+      flex-shrink: 0;
+      border: 2px solid #e2e8f0;
+      border-top: none;
+    }
+    
+    .project-title-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      pointer-events: none;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0s;
+    }
+    
+    .project-title-arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      color: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s 0.3s;
+    }
+    
+    .project-card:hover .project-title-text {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s 0.3s;
+    }
+    
+    .project-card:hover .project-title-arrow {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0s;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto" style="background-color: #ffffff; position: relative;"><!-- HOME PAGE -->
+   <div id="home-page" class="page active"><!-- Full Width Banner -->
+    <div class="banner-container" style="height: 500px;"><img src="./websiteimages/banner.png" alt="Banner" class="banner-image" style="object-position: 55% center;" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav id="nav" style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex flex-col items-center justify-center" style="pointer-events: none;">
+      <p id="banner-subtitle" class="text-sm md:text-base font-semibold mb-2 tracking-wider" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">ENGINEERING PORTFOLIO</p>
+      <h1 id="banner-title" class="text-2xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">MATTHEW JOVERO</h1>
+     </div>
+     <div class="absolute bottom-4 left-0 right-0 text-center px-6" style="pointer-events: none;">
+      <p class="text-xs" style="color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); opacity: 0.9;">Note: Although this website is accessible through a mobile device, its layout and overall experience is better on a laptop or desktop.</p>
+     </div>
+    </div><!-- About Section -->
+    <section class="py-4 px-6" style="background-color: #ffffff;">
+     <div class="max-w-2xl mx-auto">
+      <h3 id="about-title" class="text-2xl font-bold mb-2 text-center" style="color: #000000;">About Me</h3>
+      <p id="about-text" class="text-center leading-relaxed" style="color: #4a5568; font-size: 12px;">Thanks for stopping by! Whether you're here to analyze, explore, or get inspired, I hope my work sparks your curiosity.</p>
+     </div>
+    </section><!-- Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 0;">
+     <div class="max-w-2xl mx-auto"><img src="./websiteimages/dreamcareerimage.png" alt="Portfolio Image" class="w-full h-auto" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Strengths and Weaknesses Section -->
+    <section class="py-3 px-6" style="background-color: #ffffff;">
+     <div class="mx-auto" style="max-width: 650px;">
+      <div class="grid md:grid-cols-2 gap-4"><!-- Strengths -->
+       <div class="p-4 rounded-lg" style="background-color: #f7fafc; border: 2px solid #e2e8f0;">
+        <h3 class="text-lg font-bold mb-3" style="color: #2d3748;">Strengths:</h3>
+        <ul class="space-y-2" style="list-style-type: disc; padding-left: 20px;">
+         <li><p class="text-sm" style="color: #4a5568;">Addicted to CAD-modeling.</p></li>
+         <li><p class="text-sm" style="color: #4a5568;">If I don't know how it works, I will find out (eventually).</p></li>
+         <li><p class="text-sm" style="color: #4a5568;">Calm during stressful engineering situations.</p></li>
+        </ul>
+       </div><!-- Weaknesses -->
+       <div class="p-4 rounded-lg" style="background-color: #f7fafc; border: 2px solid #e2e8f0;">
+        <h3 class="text-lg font-bold mb-3" style="color: #2d3748;">Weaknesses:</h3>
+        <ul class="space-y-2" style="list-style-type: disc; padding-left: 20px;">
+         <li><p class="text-sm" style="color: #4a5568;">Addicted to CAD-modeling.</p></li>
+         <li><p class="text-sm" style="color: #4a5568;">Productivity is directly proportional to caffeine intake.</p></li>
+         <li><p class="text-sm" style="color: #4a5568;">Not calm when Wi-Fi drops.</p></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </section><!-- Experience Title Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 12px;">
+     <div class="max-w-2xl mx-auto">
+      <h3 id="experience-title" class="text-2xl font-bold text-center" style="color: #000000;">EXPERIENCE</h3>
+     </div>
+    </section><!-- Additional Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 0;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/experience.png" alt="Portfolio Image" class="w-full h-auto" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Timeline Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-2xl mx-auto">
+      <h3 class="text-2xl font-bold mb-8 text-center" style="color: #000000;">MY JOURNEY</h3><!-- Timeline Container -->
+      <div style="position: relative; padding: 0 20px;"><!-- Vertical Line -->
+       <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background-color: #e2e8f0; transform: translateX(-50%);"></div><!-- Timeline Item 1 -->
+       <div style="position: relative; margin-bottom: 60px;">
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+         <div style="width: 16px; height: 16px; background-color: #000000; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #e2e8f0; z-index: 1;"></div>
+        </div>
+        <div style="background-color: #f7fafc; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0; text-align: center; aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: 280px; margin: 0 auto;"><img src="./websiteimages/timelineimage1.png" alt="Sensitivity Analysis" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 4px;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+         <h4 style="color: #6b7280; font-size: 12px; font-weight: bold; margin-bottom: 6px;">Sep 2024 - Dec 2024</h4>
+         <h5 style="color: #000000; font-size: 13px; font-weight: bold; margin-bottom: 8px;">SENSITIVITY ANALYSIS</h5>
+         <p style="color: #4a5568; font-size: 10px; line-height: 1.4; margin-bottom: 6px;">Conducted sensitivity studies on a competition aircraft to determine ideal design choices and competition strategies for a senior design team.</p><a href="#" class="timeline-read-more" data-project="project2" style="color: #ff0000; font-size: 10px; font-weight: bold; text-decoration: underline; cursor: pointer;">Read More</a>
+        </div>
+       </div><!-- Timeline Item 2 -->
+       <div style="position: relative; margin-bottom: 60px;">
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+         <div style="width: 16px; height: 16px; background-color: #000000; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #e2e8f0; z-index: 1;"></div>
+        </div>
+        <div style="background-color: #f7fafc; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0; text-align: center; aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: 280px; margin: 0 auto;"><img src="./websiteimages/timelineimage2.png" alt="High-power Rocketry Analysis" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 4px;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+         <h4 style="color: #6b7280; font-size: 12px; font-weight: bold; margin-bottom: 6px;">Jan 2025 - Mar 2025</h4>
+         <h5 style="color: #000000; font-size: 13px; font-weight: bold; margin-bottom: 8px;">HIGH-POWER ROCKETRY ANALYSIS</h5>
+         <p style="color: #4a5568; font-size: 10px; line-height: 1.4; margin-bottom: 6px;">Conducted comparative analysis between traditional kit rockets and 3D-printed alternatives using SOLIDWORKS.</p><a href="#" class="timeline-read-more" data-project="project3" style="color: #ff0000; font-size: 10px; font-weight: bold; text-decoration: underline; cursor: pointer;">Read More</a>
+        </div>
+       </div><!-- Timeline Item 3 -->
+       <div style="position: relative; margin-bottom: 60px;">
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+         <div style="width: 16px; height: 16px; background-color: #000000; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #e2e8f0; z-index: 1;"></div>
+        </div>
+        <div style="background-color: #f7fafc; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0; text-align: center; aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: 280px; margin: 0 auto;"><img src="./websiteimages/timelineimage3.png" alt="Autonomous Robot" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 4px;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+         <h4 style="color: #6b7280; font-size: 12px; font-weight: bold; margin-bottom: 6px;">Mar 2025 - May 2025</h4>
+         <h5 style="color: #000000; font-size: 13px; font-weight: bold; margin-bottom: 8px;">AUTONOMOUS ROBOT</h5>
+         <p style="color: #4a5568; font-size: 10px; line-height: 1.4; margin-bottom: 6px;">Led the mechanical design and program of an autonomous robot capable of interacting with infrared beacons.</p><a href="#" class="timeline-read-more" data-project="project1" style="color: #ff0000; font-size: 10px; font-weight: bold; text-decoration: underline; cursor: pointer;">Read More</a>
+        </div>
+       </div><!-- Timeline Item 4 -->
+       <div style="position: relative;">
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+         <div style="width: 16px; height: 16px; background-color: #000000; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #e2e8f0; z-index: 1;"></div>
+        </div>
+        <div style="background-color: #f7fafc; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0; text-align: center; aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: 280px; margin: 0 auto;"><img src="./websiteimages/timelineimage4.png" alt="Epidemic Simulation Model" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 4px;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+         <h4 style="color: #6b7280; font-size: 12px; font-weight: bold; margin-bottom: 6px;">Aug 2025 - Dec 2025</h4>
+         <h5 style="color: #000000; font-size: 13px; font-weight: bold; margin-bottom: 8px;">EPIDEMIC SIMULATION MODEL</h5>
+         <p style="color: #4a5568; font-size: 10px; line-height: 1.4; margin-bottom: 6px;">C++/Python model replicating the spread of a global pandemic with variable user outcomes.</p><a href="#" class="timeline-read-more" data-project="project5" style="color: #ff0000; font-size: 10px; font-weight: bold; text-decoration: underline; cursor: pointer;">Read More</a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Contact Bar -->
+
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+  
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p id="footer-text" style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECTS PAGE -->
+   <div id="projects-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="./websiteimages/projectsbanner.png" alt="Banner" class="banner-image" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 id="projects-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">PROJECTS</h1>
+     </div>
+    </div><!-- Projects Content Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 24px;">
+     <div class="max-w-6xl mx-auto"><!-- Instruction Text -->
+      <p class="text-center" style="color: #2d3748; font-size: 14px; margin-bottom: 16px;">Click on a picture to learn more!</p><!-- Filter Buttons -->
+      <div class="flex justify-center gap-3 mb-3"><button class="filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="all" style="background-color: #000000; color: #ffffff; opacity: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">ALL</button> <button class="filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="cad" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">CAD</button> <button class="filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="program" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">PROGRAM</button>
+      </div><!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-2xl mx-auto"><!-- Project Card 1 -->
+       <div class="project-card overflow-hidden shadow-lg" data-category="program" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard1.png" alt="Project 1" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-title">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">AUTONOMOUS ROBOT</h3>
+        </div>
+       </div><!-- Project Card 2 -->
+       <div class="project-card overflow-hidden shadow-lg" data-category="program" data-project="project2" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard2.png" alt="Project 2" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-title">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">SENSITIVITY ANALYSIS</h3>
+        </div>
+       </div><!-- Project Card 3 -->
+       <div class="project-card overflow-hidden shadow-lg" data-category="cad" data-project="project3" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard3.png" alt="Project 3" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-title">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">ROCKETRY ANALYSIS</h3>
+        </div>
+       </div><!-- Project Card 4 -->
+       <div class="project-card overflow-hidden shadow-lg" data-category="cad" data-project="project4" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard4.png" alt="Project 4" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-title">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">RADIAL ENGINE</h3>
+        </div>
+       </div><!-- Project Card 5 -->
+       <div class="project-card overflow-hidden shadow-lg" data-category="program" data-project="project5" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard5.png" alt="Project 5" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-title">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">EPIDEMIC SIMULATION MODEL</h3>
+        </div>
+       </div><!-- Project Card 6 -->
+       <div class="project-card overflow-hidden shadow-lg" data-category="random" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard6.png" alt="Project 6" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-title">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">RANDOM THINGS</h3>
+        </div>
+       </div><!-- Empty Slot 7 -->
+       <div style="background-color: transparent; aspect-ratio: 1/0.75;"></div><!-- Coming Soon Card - Slot 8 -->
+       <div class="project-card overflow-hidden shadow-lg coming-soon-card" data-category="all" style="background-color: #9ca3af; border: 2px solid #6b7280; transition: all 0.5s ease; aspect-ratio: 1/0.75; cursor: default; position: relative;"><!-- Vignette overlay -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; box-shadow: inset 0 0 60px 20px rgba(0, 0, 0, 0.5); pointer-events: none; z-index: 1;"></div>
+        <div class="coming-soon-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.7); opacity: 0; transition: opacity 0.3s ease; z-index: 2;">
+         <h3 class="text-sm font-bold" style="color: #ffffff;">COMING SOON</h3>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p id="footer-text-projects" style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- ABOUT PAGE -->
+   <div id="about-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="./websiteimages/myphoto2.png" alt="Banner" class="banner-image" style="object-position: center 20%;" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 id="about-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">ABOUT ME</h1>
+     </div>
+    </div><!-- About Content Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 48px; padding-bottom: 24px;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content -->
+       <div>
+        <p class="text-sm leading-relaxed" style="color: #000000; margin-bottom: 12px;">Hi there! My name is Matthew Jovero and I'm currently in my sophomore year as an engineering student at San José State University. Having always lived in the bay area, my passion for engineering and technology came from a 13-year old boy being interested in assembling paper origami parts.</p>
+        <p class="text-sm leading-relaxed" style="color: #000000; margin-bottom: 16px;">Currently, I am planning to begin a new CAD project this December that will go on into the new year! If you'd like to see how my curiosity grew into real engineering experience, you can learn more about my journey on my resume:</p>
+        <div class="flex justify-center"><button class="view-resume-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">VIEW RESUME</button>
+        </div>
+       </div><!-- Right Side - Image -->
+       <div><img src="./websiteimages/aboutphoto.png" alt="About Image" class="w-full h-auto rounded-lg shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        <p class="text-center mt-2" style="color: #4a5568; font-size: 11px;">My team and I building a fully autonomous robot</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Home Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="home-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'" data-page="home">HOME</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p id="footer-text-about" style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- CONTACT PAGE -->
+   <div id="contact-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="./websiteimages/e3dM0WT.png" alt="Banner" class="banner-image" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 id="contact-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">CONTACT</h1>
+     </div>
+    </div><!-- Contact Content Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 48px; padding-bottom: 48px;">
+     <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-2xl font-bold" style="color: #2d3748; margin-bottom: 24px;">LET'S TALK</h2>
+      <p class="text-sm" style="color: #4a5568; margin-bottom: 12px;"><strong>Email:</strong> <a href="mailto:matthewjoverohome@gmail.com" style="color: #4a5568; text-decoration: underline;" onmouseover="this.style.color='#000000'" onmouseout="this.style.color='#4a5568'">matthewjoverohome@gmail.com</a></p>
+      <p class="text-sm" style="color: #4a5568; margin-bottom: 12px;"><strong>Telephone:</strong> 925 - 384 - 9251</p>
+      <p class="text-sm flex items-center justify-center gap-2" style="color: #4a5568;"><img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 20px; height: 20px; vertical-align: middle;" onerror="this.style.display='none';"> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer" style="color: #4a5568; text-decoration: underline;" onmouseover="this.style.color='#000000'" onmouseout="this.style.color='#4a5568'"> linkedin.com/in/mzjovero </a></p>
+     </div>
+</section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECT 1 PAGE - AUTONOMOUS ROBOT -->
+   <div id="project1-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">AUTONOMOUS ROBOT</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-1 items-start"><!-- Left Side - Text Content and Images -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I partook in a <span style="color: #ff0000; font-weight: bold;">team project</span> to build a completely autonomous VEX companion robot with the capability of a domestic task: Turning off a stove and bringing a plate to another room. As the mechanical lead, I was in charge of building the robot chassis frame with a functioning single-axis arm in the span of six weeks, taking into account a weight limit.</p><img src="./websiteimages/robotpicture1.png" alt="Robot Project" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Right Side - Image and Text -->
+       <div class="flex flex-col items-center"><img src="./websiteimages/robotpicture2.png" alt="Autonomous Robot" class="h-auto shadow-lg mb-4" style="max-width: 70%;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748; max-width: 70%;">Mechanical parts consisted mainly of aluminum beams, which are lightweight yet strong in order to minimize final weight. Additionally, I assisted in C-programming of the robotic behaviors, testing and troubleshooting, and writing a final report. Our final robot was able to complete the task in 19 seconds which sets a <span style="color: #ff0000; font-weight: bold;">university record</span>.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Additional Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 0; margin-top: -40px;">
+     <div style="max-width: 770px; margin: 0 auto;"><img src="./websiteimages/robotpicture3.png" alt="Project Detail" class="shadow-lg" style="width: 100%; height: auto; display: block;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Video Section -->
+    <section class="py-2 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <p class="text-sm leading-relaxed mb-3 text-center" style="color: #2d3748;">Incase the YouTube embed is blocked: https://youtu.be/31GKb08b29w</p>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #f0f0f0;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: block;" src="https://www.youtube.com/embed/xRtj6di9XdI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+      </div><!-- Image below video -->
+      <div class="mt-4"><img src="./websiteimages/robotpicture4.png" alt="Robot Project Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+      </div>
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; margin-top: 48px; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project2" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard2.png" alt="Sensitivity Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         SENSITIVITY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project3" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard3.png" alt="Rocketry Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         ROCKETRY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project5" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard5.png" alt="Epidemic Simulation" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         EPIDEMIC SIMULATION MODEL
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RANDOM THINGS
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECT 2 PAGE - SENSITIVITY ANALYSIS -->
+   <div id="project2-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">SENSITIVITY ANALYSIS</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Image -->
+       <div><img src="./websiteimages/dbfpicture1.png" alt="Sensitivity Analysis" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Right Side - Text Content -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I had the unique opportunity of conducting a sensitivity analysis for a <span style="color: #ff0000; font-weight: bold;">senior design team</span> who were building an aircraft for an annual AIAA Design/Build/Fly competition. While not being a direct competition member, I was responsible for helping the seniors determine best aircraft design choices and competition strategies.</p>
+       </div>
+      </div><!-- Additional Image Below -->
+      <div class="mt-6"><img src="./websiteimages/dbfpicture2.png" alt="Additional Analysis Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+      </div><!-- Description Text Below Image -->
+      <div class="mt-4">
+       <p class="text-sm leading-relaxed" style="color: #2d3748;">The sensitivity study was conducted utilizing MATLAB and noting competition equations that impacted the score. I used a parameter sweep technique to see how changing certain design variables impacted the score and overall aircraft performance. I helped the team determine a 25 lb. total aircraft weight, a 15lb. total payload weight, a 70-85 Watt-hour battery performance, and additional strategies.</p>
+      </div><!-- Additional Image Below Text -->
+      <div class="mt-6 flex justify-center"><img src="./websiteimages/dbfpicture3.png" alt="Analysis Detail" class="shadow-lg" style="max-width: 85%; height: auto;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+      </div>
+     </div>
+    </section><!-- Additional Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/jSFXTJD.png" alt="Sensitivity Analysis Additional" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         AUTONOMOUS ROBOT
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project4" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard4.png" alt="Radial Engine" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RADIAL ENGINE
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project3" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard3.png" alt="Rocketry Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         ROCKETRY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RANDOM THINGS
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECT 3 PAGE - ROCKETRY ANALYSIS -->
+   <div id="project3-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">ROCKETRY ANALYSIS</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content and space for other images -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I have always been interested in rocketry and 3D-modeling. I created a personal project comparing a high-power rocket from a traditional kit to a fully 3D-printed one with PETG using <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span>.</p><!-- Additional image below text -->
+        <div class="mt-4"><img src="./websiteimages/rocketry1.png" alt="Rocket Analysis" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        </div><!-- New image below -->
+        <div class="mt-4"><img src="./websiteimages/rocketry2.png" alt="Rocket Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        </div>
+       </div><!-- Right Side - Two Images Stacked -->
+       <div class="flex flex-col gap-4"><img src="./websiteimages/rocketry3.png" alt="Rocket Component" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"> <img src="./websiteimages/rocketry4.png" alt="Rocket Design" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"> <!-- Additional text below second image -->
+        <div class="mt-4">
+         <p class="text-sm leading-relaxed" style="color: #2d3748;">Due to how the rocket connects to the parachute once it deploys, the fin opposite to the eye-bolt hole of the front-centering ring will always strike the ground first at landing. I conducted FEA on this fin to see how it reacts with PETG material.</p>
+         <p class="text-sm leading-relaxed mt-2" style="color: #2d3748;">Additionally, to compare cost, I included all significant middle-end materials and recorded a <span style="color: #ff0000; font-weight: bold;">percentage difference of 11.6%</span> in favor of the 3D-printed fabrication.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/rocketry5.png" alt="Rocket Analysis Bottom" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Additional Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/rocketry6.png" alt="Rocket Analysis Additional" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project5" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard5.png" alt="Epidemic Simulation" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         EPIDEMIC SIMULATION MODEL
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project2" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard2.png" alt="Sensitivity Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         SENSITIVITY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         AUTONOMOUS ROBOT
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RANDOM THINGS
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECT 4 PAGE - RADIAL ENGINE -->
+   <div id="project4-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">RADIAL ENGINE</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content and Image -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">In my computer aided design course, I designed a radial engine that you would typically see from an aircraft during the piston-engine era using <span style="color: #ff0000; font-weight: bold;">Autodesk Inventor</span>.</p><!-- New image below text -->
+        <div class="mt-4"><img src="./websiteimages/radialengine1.png" alt="Radial Engine Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        </div>
+       </div><!-- Right Side - Image -->
+       <div class="flex justify-center">
+        <div><img src="./websiteimages/radialengine2.png" alt="Radial Engine" class="shadow-lg" style="max-width: 80%; height: auto; margin: 0 auto;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+         <p class="text-sm leading-relaxed mt-4" style="color: #2d3748; max-width: 80%; margin-left: auto; margin-right: auto;">Material consisted of steel AISI 4340 242 HR for bearings and plugs. Significant design challenges include intricate details in the piston head and master rod parts.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/radialengine3.png" alt="Radial Engine Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Additional Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/radialengine4.png" alt="Radial Engine Additional" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project3" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard3.png" alt="Rocketry Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         ROCKETRY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         AUTONOMOUS ROBOT
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RANDOM THINGS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project2" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard2.png" alt="Sensitivity Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         SENSITIVITY ANALYSIS
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">������ 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECT 5 PAGE - EPIDEMIC SIMULATION MODEL -->
+   <div id="project5-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">EPIDEMIC SIMULATION MODEL</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Image -->
+       <div><img src="./websiteimages/esim1.png" alt="Epidemic Simulation" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Right Side - Text Content -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">During the summer I decided to initiate a software project by creating two versions of a pandemic simulation minigame using <span style="color: #ff0000; font-weight: bold;">C++</span> and <span style="color: #ff0000; font-weight: bold;">Python</span>.</p>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">The game requires strategy and timing in order to win. The goal of the game is to spread your plague to the entire country before doctors find a cure for it!</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Additional Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/esim2.png" alt="Epidemic Simulation Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Description Text Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto">
+      <p class="text-sm leading-relaxed mb-3" style="color: #2d3748;">The format of the program utilizes data structures to track parameter values and relationships. These values change over time through a probability-based logic system and point system where the player can purchase upgrades for their plague and slow down humanity's response. The Python version consists of different abilities for your plague that can help you advance further into the game.</p>
+      <p class="text-sm leading-relaxed" style="color: #2d3748;">Project challenges include properly syncing plague stats with the appropriate number based on population.</p>
+     </div>
+    </section><!-- Video Section -->
+    <section class="py-6 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <p class="text-sm leading-relaxed mb-3 text-center" style="color: #2d3748;">In case the YouTube embed is blocked: https://youtu.be/NI7moMOjPAw</p>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #f0f0f0;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: block;" src="https://www.youtube.com/embed/NI7moMOjPAw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+      </div><!-- Image below video -->
+      <div class="mt-4"><img src="./websiteimages/esim3.png" alt="Epidemic Simulation Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+      </div>
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project2" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard2.png" alt="Sensitivity Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         SENSITIVITY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         AUTONOMOUS ROBOT
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project4" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard4.png" alt="Radial Engine" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RADIAL ENGINE
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RANDOM THINGS
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div><!-- PROJECT 6 PAGE - RANDOM THINGS -->
+   <div id="project6-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">RANDOM THINGS</h1>
+     </div>
+    </div><!-- Intro Text Section -->
+    <section class="py-6 px-6" style="background-color: #ffffff;">
+     <div class="max-w-5xl mx-auto text-center">
+      <p class="text-sm leading-relaxed" style="color: #2d3748; font-style: italic;">You don't need words to tell a story that pictures already do for you... (more coming!)</p>
+     </div>
+    </section><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff; padding-top: 6px;">
+     <div class="max-w-5xl mx-auto"><!-- Gallery Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><!-- Image 1 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery1.png" alt="Gallery Image 1" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 2 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery2.png" alt="Gallery Image 2" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 3 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery3.png" alt="Gallery Image 3" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 4 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery4.png" alt="Gallery Image 4" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 5 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery5.png" alt="Gallery Image 5" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 6 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery6.png" alt="Gallery Image 6" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 7 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery7.png" alt="Gallery Image 7" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 8 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery8.png" alt="Gallery Image 8" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 9 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery9.png" alt="Gallery Image 9" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 10 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery10.png" alt="Gallery Image 10" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Image 11 -->
+       <div class="overflow-hidden shadow-lg" style="background-color: #f7fafc; height: 250px;"><img src="./websiteimages/gallery11.png" alt="Gallery Image 11" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div>
+      </div>
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         AUTONOMOUS ROBOT
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project5" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard5.png" alt="Epidemic Simulation" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         EPIDEMIC SIMULATION MODEL
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project3" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard3.png" alt="Rocketry Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         ROCKETRY ANALYSIS
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project4" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard4.png" alt="Radial Engine" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         RADIAL ENGINE
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+</section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+
+
+   </div><!-- RESUME PAGE -->
+   <div id="resume-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container"><img src="./websiteimages/resumebanner.png" alt="Banner" class="banner-image" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 id="resume-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">RESUME</h1>
+     </div>
+    </div><!-- Resume Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 24px;">
+     <div class="max-w-3xl mx-auto"><!-- Resume PDF Button -->
+      <div class="flex justify-center" style="margin-bottom: 16px;"><a href="https://drive.google.com/file/d/1veMX7ulqJPMTf58u2uFLwsvSL5vtWBWT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 text-xs font-bold tracking-wide smooth-transition" style="background-color: #000000; color: #ffffff; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 50px; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'"> RESUME PDF </a>
+      </div><img src="./websiteimages/resume.png" alt="Resume" class="w-full h-auto rounded-lg shadow-lg" onerror="this.src=''; this.alt='Resume image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+  
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p id="footer-text-resume" style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      about_title: "SUMMARY",
+      about_text: "Thanks for stopping by! Whether you're here to analyze, explore, or get inspired, I hope my work sparks your curiosity.",
+      resume_banner_title: "RESUME",
+      footer_text: "© 2024 My Portfolio. All rights reserved.",
+      primary_color: "#667eea",
+      surface_color: "#ffffff",
+      text_color: "#2d3748",
+      secondary_text_color: "#4a5568",
+      accent_color: "#764ba2",
+      font_family: "Montserrat",
+      font_size: 16
+    };
+
+    let currentPage = 'home';
+
+    async function onConfigChange(config) {
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = 'sans-serif';
+      
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.body.style.fontSize = `${fontSize}px`;
+      
+      // Update text content
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('resume-banner-title').textContent = config.resume_banner_title || defaultConfig.resume_banner_title;
+      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+      document.getElementById('footer-text-resume').textContent = config.footer_text || defaultConfig.footer_text;
+      document.getElementById('footer-text-projects').textContent = config.footer_text || defaultConfig.footer_text;
+      document.getElementById('footer-text-about').textContent = config.footer_text || defaultConfig.footer_text;
+      document.getElementById('footer-text-contact').textContent = config.footer_text || defaultConfig.footer_text;
+      
+      // Update colors
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+      
+      document.getElementById('app').style.backgroundColor = surfaceColor;
+      
+      document.getElementById('about-title').style.color = '#000000';
+      document.getElementById('about-text').style.color = secondaryTextColor;
+      
+      // Update font sizes proportionally - both titles now at 1.5x
+      document.getElementById('about-title').style.fontSize = `${fontSize * 1.5}px`;
+      document.getElementById('about-text').style.fontSize = `${fontSize * 0.75}px`;
+      document.getElementById('resume-banner-title').style.fontSize = `${fontSize * 2.5}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
+            set: (value) => {
+              config.secondary_text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["about_title", config.about_title || defaultConfig.about_title],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["resume_banner_title", config.resume_banner_title || defaultConfig.resume_banner_title],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Page navigation
+    function showPage(pageName) {
+      currentPage = pageName;
+      
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show selected page
+      const targetPage = document.getElementById(`${pageName}-page`);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+      
+      // Reset filter to 'all' when entering projects page
+      if (pageName === 'projects') {
+        filterProjects('all');
+      }
+      
+      // Update active nav link
+      updateActiveNav();
+      
+      // Scroll to top
+      document.getElementById('app').scrollTop = 0;
+    }
+
+    function updateActiveNav() {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.dataset.page === currentPage) {
+          link.style.color = '#ff0000';
+        } else {
+          link.style.color = '#ffffff';
+        }
+      });
+    }
+
+    // Add click handlers to all nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.dataset.page;
+        showPage(page);
+      });
+    });
+
+    // Filter functionality
+    let currentFilter = 'all';
+    
+    function filterProjects(filter) {
+      currentFilter = filter;
+      // Only target project cards on the projects page, not in "Other Projects" sections
+      const projectsPage = document.getElementById('projects-page');
+      const projectCards = projectsPage.querySelectorAll('.project-card');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      
+      // Update button styles
+      filterButtons.forEach(btn => {
+        if (btn.dataset.filter === filter) {
+          btn.style.backgroundColor = '#000000';
+          btn.style.color = '#ffffff';
+          btn.style.opacity = '1';
+        } else {
+          btn.style.backgroundColor = '#000000';
+          btn.style.color = '#ffffff';
+          btn.style.opacity = '0.5';
+        }
+      });
+      
+      // Filter cards
+      projectCards.forEach(card => {
+        const category = card.dataset.category;
+        
+        if (filter === 'all' || category === filter) {
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+          card.style.pointerEvents = 'auto';
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.8)';
+          card.style.pointerEvents = 'none';
+        }
+      });
+    }
+    
+    // Add click handlers to filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterProjects(btn.dataset.filter);
+      });
+    });
+
+    // Add click handler to view resume button
+    const viewResumeBtn = document.querySelector('.view-resume-btn');
+    if (viewResumeBtn) {
+      viewResumeBtn.addEventListener('click', () => {
+        showPage('resume');
+      });
+    }
+
+    // Add click handlers to home buttons
+    document.querySelectorAll('.home-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showPage('home');
+      });
+    });
+
+    // Add click handlers to project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const projectPage = card.dataset.project;
+        if (projectPage) {
+          showPage(projectPage);
+        }
+      });
+    });
+
+    // Add click handlers to back to projects buttons
+    document.querySelectorAll('.back-to-projects-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showPage('projects');
+      });
+    });
+
+    // Parallax effect for banner images
+    function handleParallax() {
+      const banners = document.querySelectorAll('.banner-parallax');
+      const appContainer = document.getElementById('app');
+      const scrollPosition = appContainer.scrollTop;
+      
+      banners.forEach(banner => {
+        const bannerSection = banner.closest('.other-projects-banner');
+        if (!bannerSection) return;
+        
+        // Get the position of the banner section relative to the viewport
+        const rect = bannerSection.getBoundingClientRect();
+        const bannerTop = rect.top;
+        const bannerHeight = rect.height;
+        const windowHeight = window.innerHeight;
+        
+        // Calculate when banner enters viewport (starts visible at bottom of screen)
+        // and when it exits (top of banner reaches top of viewport)
+        if (bannerTop < windowHeight && bannerTop + bannerHeight > 0) {
+          // Banner is visible in viewport
+          // Calculate progress from center of screen, creating smoother movement
+          const viewportCenter = windowHeight / 2;
+          const bannerCenter = bannerTop + bannerHeight / 2;
+          const distanceFromCenter = viewportCenter - bannerCenter;
+          
+          // Apply prominent parallax with smoother calculation
+          // Movement is based on distance from viewport center
+          const offset = distanceFromCenter * 0.4;
+          
+          banner.style.transform = `translateY(${offset}px)`;
+        }
+      });
+    }
+    
+    // Add scroll listener to app container
+    document.getElementById('app').addEventListener('scroll', handleParallax);
+    
+    // Initial parallax position
+    handleParallax();
+
+    // Add click handlers to all logo images
+    document.querySelectorAll('.logo-container').forEach(logo => {
+      logo.addEventListener('click', () => {
+        showPage('home');
+      });
+    });
+
+    // Add hover effect to coming soon card
+    const comingSoonCard = document.querySelector('.coming-soon-card');
+    if (comingSoonCard) {
+      const overlay = comingSoonCard.querySelector('.coming-soon-overlay');
+      comingSoonCard.addEventListener('mouseenter', () => {
+        overlay.style.opacity = '1';
+      });
+      comingSoonCard.addEventListener('mouseleave', () => {
+        overlay.style.opacity = '0';
+      });
+    }
+
+    // Add click handlers to timeline read more links
+    document.querySelectorAll('.timeline-read-more').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectPage = link.dataset.project;
+        if (projectPage) {
+          showPage(projectPage);
+        }
+      });
+    });
+
+    // Initialize
+    updateActiveNav();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae239c4720d16a2',t:'MTc2NTc2Mjc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
