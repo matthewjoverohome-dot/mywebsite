@@ -47,18 +47,45 @@
       object-position: center;
     }
     
-    .smooth-transition {
-      transition: all 0.3s ease;
-    }
-    
-    .nav-link:hover {
-      color: #ff0000 !important;
-    }
+
+.nav-link {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* underline (hidden by default) */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+/* hover underline */
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ACTIVE PAGE underline (always visible) */
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
     
     .page {
       display: none;
       opacity: 0;
       transform: translateX(-100px);
+    }
+      .smooth-transition {
+      transition: all 0.3s ease;
     }
     
 .page.active {
@@ -1398,7 +1425,7 @@
     function updateActiveNav() {
       document.querySelectorAll('.nav-link').forEach(link => {
         if (link.dataset.page === currentPage) {
-          link.style.color = '#ff0000';
+          link.style.color = '#ffffff';
         } else {
           link.style.color = '#ffffff';
         }
@@ -1567,4 +1594,5 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae239c4720d16a2',t:'MTc2NTc2Mjc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
