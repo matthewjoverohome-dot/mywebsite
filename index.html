@@ -8,6 +8,27 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet">
   <style>
+
+    /* ===== Shared Black Button Hover Animation ===== */
+.black-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.black-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+
+    .logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.6));
+}
+
     body {
       box-sizing: border-box;
     }
@@ -294,7 +315,7 @@
   href="https://drive.google.com/file/d/1veMX7ulqJPMTf58u2uFLwsvSL5vtWBWT/view?usp=sharing"
   target="_blank"
   rel="noopener noreferrer"
-  class="smooth-transition text-white font-bold tracking-wide text-sm"
+  class="black-btn smooth-transition text-white font-bold tracking-wide text-sm"
   style="
     background-color: #000000;
     padding: 14px 36px;
@@ -315,7 +336,7 @@
   href="https://drive.google.com/file/d/1m2oX5wEtq2bTjEHuPsB9J4jKcrFy6-ik/view?usp=sharing"
   target="_blank"
   rel="noopener noreferrer"
-  class="smooth-transition text-white font-bold tracking-wide text-sm"
+  class="black-btn smooth-transition text-white font-bold tracking-wide text-sm"
   style="
     background-color: #000000;
     padding: 14px 36px;
@@ -366,10 +387,10 @@
       <h1 id="projects-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">PROJECTS</h1>
      </div>
     </div><!-- Projects Content Section -->
-    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 24px;">
+    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 43px;"> <!-- CHANGES FOOTER -->
      <div class="max-w-6xl mx-auto"><!-- Instruction Text -->
       <p class="text-center" style="color: #2d3748; font-size: 14px; margin-bottom: 16px;">Click on a picture to learn more!</p><!-- Filter Buttons -->
-      <div class="flex justify-center gap-3 mb-3"><button class="filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="all" style="background-color: #000000; color: #ffffff; opacity: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">ALL</button> <button class="filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="cad" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">CAD</button> <button class="filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="program" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">PROGRAM</button>
+      <div class="flex justify-center gap-3 mb-3"><button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="all" style="background-color: #000000; color: #ffffff; opacity: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">ALL</button> <button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="cad" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">CAD</button> <button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="program" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">PROGRAM</button>
       </div><!-- Project Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-2xl mx-auto"><!-- Project Card 1 -->
        <div class="project-card overflow-hidden shadow-lg" data-category="program" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75;"><img src="./websiteimages/projectcard1.png" alt="Project 1" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
@@ -439,13 +460,13 @@
       <h1 id="about-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">ABOUT ME</h1>
      </div>
     </div><!-- About Content Section -->
-    <section class="px-6" style="background-color: #ffffff; padding-top: 48px; padding-bottom: 24px;">
+    <section class="px-6" style="background-color: #ffffff; padding-top: 48px; padding-bottom: 227px;">
      <div class="max-w-3xl mx-auto">
       <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content -->
        <div>
         <p class="text-sm leading-relaxed" style="color: #000000; margin-bottom: 12px;">Hi there! My name is Matthew Jovero and I'm currently in my sophomore year as an engineering student at San José State University. Having always lived in the bay area, my passion for engineering and technology came from a 13-year old boy being interested in assembling paper origami parts.</p>
         <p class="text-sm leading-relaxed" style="color: #000000; margin-bottom: 16px;">Currently, I am planning to begin a new CAD project this December that will go on into the new year! If you'd like to see how my curiosity grew into real engineering experience, you can learn more about my journey on my resume:</p>
-        <div class="flex justify-center"><button class="view-resume-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">VIEW RESUME</button>
+        <div class="flex justify-center"><button class="black-btn view-resume-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">VIEW RESUME</button>
         </div>
        </div><!-- Right Side - Image -->
        <div><img src="./websiteimages/aboutphoto.png" alt="About Image" class="w-full h-auto rounded-lg shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
@@ -454,7 +475,7 @@
       </div>
      </div>
     </section><!-- Home Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="home-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'" data-page="home">HOME</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn home-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'" data-page="home">HOME</button>
     </section><!-- Contact Bar -->
 <!-- Contact Bar -->
 <section class="py-4 px-6" style="background-color: #e5e7eb;">
@@ -490,7 +511,7 @@
       <h1 id="contact-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">CONTACT</h1>
      </div>
     </div><!-- Contact Content Section -->
-    <section class="px-6" style="background-color: #ffffff; padding-top: 48px; padding-bottom: 48px;">
+    <section class="px-6" style="background-color: #ffffff; padding-top: 48px; padding-bottom: 470px;">
      <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-2xl font-bold" style="color: #2d3748; margin-bottom: 24px;">LET'S TALK</h2>
       <p class="text-sm" style="color: #4a5568; margin-bottom: 12px;"><strong>Email:</strong> <a href="mailto:matthewjoverohome@gmail.com" style="color: #4a5568; text-decoration: underline;" onmouseover="this.style.color='#000000'" onmouseout="this.style.color='#4a5568'">matthewjoverohome@gmail.com</a></p>
@@ -607,7 +628,7 @@
       </div>
      </div>
     </section><!-- Back Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
     </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -715,7 +736,7 @@
       </div>
      </div>
     </section><!-- Back Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
     </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -828,7 +849,7 @@
       </div>
      </div>
     </section><!-- Back Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
     </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -938,7 +959,7 @@
       </div>
      </div>
     </section><!-- Back Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
     </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -1055,7 +1076,7 @@
       </div>
      </div>
     </section><!-- Back Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
     </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -1174,7 +1195,7 @@
       </div>
      </div>
     </section><!-- Back Button Section -->
-    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
 </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -1205,7 +1226,7 @@
     </div><!-- Resume Image Section -->
     <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 24px;">
      <div class="max-w-3xl mx-auto"><!-- Resume PDF Button -->
-      <div class="flex justify-center" style="margin-bottom: 16px;"><a href="https://drive.google.com/file/d/1veMX7ulqJPMTf58u2uFLwsvSL5vtWBWT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 text-xs font-bold tracking-wide smooth-transition" style="background-color: #000000; color: #ffffff; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 50px; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'"> RESUME PDF </a>
+      <div class="flex justify-center" style="margin-bottom: 16px;"><a href="https://drive.google.com/file/d/1veMX7ulqJPMTf58u2uFLwsvSL5vtWBWT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="black-btn inline-block px-4 py-2 text-xs font-bold tracking-wide smooth-transition" style="background-color: #000000; color: #ffffff; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 50px; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'"> RESUME PDF </a>
       </div><img src="./websiteimages/resume.png" alt="Resume" class="w-full h-auto rounded-lg shadow-lg" onerror="this.src=''; this.alt='Resume image failed to load'; this.style.display='none';">
      </div>
     </section><!-- Contact Bar -->
@@ -1546,3 +1567,4 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae239c4720d16a2',t:'MTc2NTc2Mjc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
