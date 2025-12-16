@@ -1255,7 +1255,11 @@
      <div class="max-w-3xl mx-auto"><!-- Resume PDF Button -->
       <div class="flex justify-center" style="margin-bottom: 16px;"><a href="https://drive.google.com/file/d/1veMX7ulqJPMTf58u2uFLwsvSL5vtWBWT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="black-btn inline-block px-4 py-2 text-xs font-bold tracking-wide smooth-transition" style="background-color: #000000; color: #ffffff; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 50px; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'"> RESUME PDF </a>
       </div><img src="./websiteimages/resume.png" alt="Resume" class="w-full h-auto rounded-lg shadow-lg" onerror="this.src=''; this.alt='Resume image failed to load'; this.style.display='none';">
-     </div>
+      <div class="flex justify-center mt-8">
+        <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn home-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'" data-page="home">HOME</button>
+
+
+      </div>
     </section><!-- Contact Bar -->
     <section class="py-4 px-6" style="background-color: #e5e7eb;">
      <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
@@ -1422,15 +1426,18 @@
       document.getElementById('app').scrollTop = 0;
     }
 
-    function updateActiveNav() {
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.dataset.page === currentPage) {
-          link.style.color = '#ffffff';
-        } else {
-          link.style.color = '#ffffff';
-        }
-      });
-    }
+function updateActiveNav() {
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const isActive = link.dataset.page === currentPage;
+
+    // remove any old inline color you may have set before
+    link.style.color = '';
+
+    // toggle active class for underline
+    link.classList.toggle('active', isActive);
+  });
+}
+
 
     // Add click handlers to all nav links
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -1594,5 +1601,6 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae239c4720d16a2',t:'MTc2NTc2Mjc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
