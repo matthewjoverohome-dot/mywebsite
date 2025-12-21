@@ -66,9 +66,12 @@
     
     .banner-container {
       width: 100%;
-      height: 200px;
+      height: 400px;
       overflow: hidden;
       position: relative;
+    }
+    .banner-container.bannersmall {
+      height: 200px
     }
     
     .banner-image {
@@ -445,12 +448,12 @@
       <h1 id="projects-banner-title" class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">PROJECTS</h1>
      </div>
     </div><!-- Projects Content Section -->
-    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 43px;"> <!-- CHANGES FOOTER -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 24px; padding-bottom: 43px;"> <!-- CHANGES FOOTER AND ADDS MORE CANVAS -->
      <div class="max-w-6xl mx-auto"><!-- Instruction Text -->
-      <p class="text-center" style="color: #2d3748; font-size: 14px; margin-bottom: 16px;">Click on a picture to learn more!</p><!-- Filter Buttons -->
+      <p class="text-center" style="color: #2d3748; font-size: 14px; margin-bottom: 35px;">Click on a picture to learn more!</p><!-- Filter Buttons -->
       <div class="flex justify-center gap-3 mb-3"><button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="all" style="background-color: #000000; color: #ffffff; opacity: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">ALL</button> <button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="personal" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">PERSONAL</button> <button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="teams" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">STUDENT TEAMS</button>
       </div><!-- Project Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-2xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mx-auto"> <!--max-w-nx1, n changes size of project cards-->
         <!-- Project Card 1 -->
 <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="teams" data-project="project1" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
   <img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover">
@@ -529,6 +532,18 @@
          <h3 class="text-sm font-bold" style="color: #ffffff;">COMING SOON</h3>
         </div>
        </div>
+              <!-- Project Card 9 -->
+<div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="personal" data-project="project9" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
+  <img src="./websiteimages/projectcard9.png" alt="Autonomous Robot" class="w-full h-full object-cover">
+
+  <div class="project-title">
+    <div class="project-name">PULLEY CRANE SYSTEM</div>
+    <div class="project-category">Personal</div>
+  </div>
+</div>
+
+
+
       </div>
      </div>
     </section>
@@ -627,7 +642,7 @@
     </footer>
    </div><!-- PROJECT 1 PAGE - AUTONOMOUS ROBOT -->
    <div id="project1-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -712,7 +727,7 @@
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
-        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project9" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard9.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
          <div class="project-title">
           <div class="project-title-arrow">
            →
@@ -720,7 +735,7 @@
          </div>
         </div>
         <div class="project-label">
-         RANDOM THINGS
+         PULLEY CRANE SYSTEM
         </div>
        </div>
       </div>
@@ -738,7 +753,7 @@
     </footer>
    </div><!-- PROJECT 2 PAGE - SENSITIVITY ANALYSIS -->
    <div id="project2-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -820,7 +835,7 @@
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
-        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
          <div class="project-title">
           <div class="project-title-arrow">
            →
@@ -846,7 +861,7 @@
     </footer>
    </div><!-- PROJECT 3 PAGE - ROCKETRY ANALYSIS -->
    <div id="project3-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -865,7 +880,7 @@
      <div class="max-w-3xl mx-auto">
       <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content and space for other images -->
        <div>
-        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I have always been interested in rocketry and 3D-modeling. I created a personal project comparing a high-power rocket from a traditional kit to a fully 3D-printed one with PETG using <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span>.</p><!-- Additional image below text -->
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I have always been interested in rocketry and 3D-modeling. I began a personal project comparing a high-power rocket from a traditional kit to a fully 3D-printed one with PETG using <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span>.</p><!-- Additional image below text -->
         <div class="mt-4"><img src="./websiteimages/rocketry1.png" alt="Rocket Analysis" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
         </div><!-- New image below -->
         <div class="mt-4"><img src="./websiteimages/rocketry2.png" alt="Rocket Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
@@ -933,7 +948,7 @@
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
-        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
          <div class="project-title">
           <div class="project-title-arrow">
            →
@@ -959,7 +974,7 @@
     </footer>
    </div><!-- PROJECT 4 PAGE - RADIAL ENGINE -->
    <div id="project4-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -1031,7 +1046,7 @@
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
-        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project9" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard9.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
          <div class="project-title">
           <div class="project-title-arrow">
            →
@@ -1039,7 +1054,7 @@
          </div>
         </div>
         <div class="project-label">
-         RANDOM THINGS
+         PULLEY CRANE SYSTEM
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
@@ -1069,7 +1084,7 @@
     </footer>
    </div><!-- PROJECT 5 PAGE - PANDEMIC MODEL -->
    <div id="project5-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -1160,7 +1175,7 @@
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
-        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project7" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard7.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project7" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard7.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
          <div class="project-title">
           <div class="project-title-arrow">
            →
@@ -1186,7 +1201,7 @@
     </footer>
    </div><!-- PROJECT 6 PAGE - RANDOM THINGS -->
    <div id="project6-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -1306,7 +1321,7 @@
     </div>
      <!-- PROJECT 7 WIND TURBINE PAGE -->
   <div id="project7-page" class="page"><!-- Full Width Banner -->
-    <div class="banner-container"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
      <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
       <div class="max-w-6xl mx-auto px-6 py-3">
        <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
@@ -1388,7 +1403,123 @@
         </div>
        </div><!-- Project Card -->
        <div class="project-card-wrapper">
-        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(0.65);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project9" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard9.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         PULLEY CRANE SYSTEM
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Back Button Section -->
+    <section class="py-6 px-6 text-center" style="background-color: #ffffff;"><button class="black-btn back-to-projects-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" style="background-color: #000000; color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">BACK TO PROJECTS</button>
+    </section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: matthewjoverohome@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+    </div>
+ 
+  <!--PROJECT PAGE 8 PULLEY CRANE PAGE-->
+  
+     <div id="project9-page" class="page"><!-- Full Width Banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+        <div class="flex gap-6"><span class="nav-link text-xs smooth-transition cursor-pointer" data-page="home" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Home</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="resume" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Resume</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="projects" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Projects</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="about" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About</span> <span class="nav-link text-xs smooth-transition cursor-pointer" data-page="contact" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Contact</span>
+        </div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">PULLEY CRANE SYSTEM</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content and space for other images -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I designed a detailed pulley crane system using <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span>, taking for account long-term stress loads for better functionality.</span> <!-- Additional image below text -->
+        <div class="mt-4"><img src="./websiteimages/projectcard9.png" alt="Rocket Analysis" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        </div><!-- New image below -->
+        <div class="mt-4"><img src="./websiteimages/crane3.png" alt="Rocket Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        </div>
+       </div><!-- Right Side - Two Images Stacked -->
+       <div class="flex flex-col gap-4"><img src="./websiteimages/crane2.png" alt="Rocket Component" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"> <img src="./websiteimages/crane1.png" alt="Rocket Design" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"> <!-- Additional text below second image -->
+        <div class="mt-4">
+         <p class="text-sm leading-relaxed" style="color: #2d3748;">Multiple fillets were distributed to different parts of the pulley assembly to reduce concentrations of stress. I designed the top interface of the took with a metric fine threaded shank of M20 x 0.5 for secure attachment and realistic detailing of the hardware.</p>
+         <p class="text-sm leading-relaxed mt-2" style="color: #2d3748;">Challenges included curvature of the hook, deciding on realistic proportions, and different mating relationships during assembly.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/crane4.png" alt="Rocket Analysis Bottom" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Additional Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+     <div class="max-w-3xl mx-auto"><img src="./websiteimages/crane5.png" alt="Rocket Analysis Additional" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="display: block; width: 100%; height: 400px; object-fit: cover; position: absolute; top: -100px; left: 0; transform: translateY(0); will-change: transform; filter: brightness(0.5);" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">OTHER PROJECTS</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+     <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4"><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project5" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard5.png" alt="Epidemic Simulation" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         PANDEMIC MODEL
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project7" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard7.png" alt="Sensitivity Analysis" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         WIND TURBINE
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project1" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+         <div class="project-title">
+          <div class="project-title-arrow">
+           →
+          </div>
+         </div>
+        </div>
+        <div class="project-label">
+         AUTONOMOUS ROBOT
+        </div>
+       </div><!-- Project Card -->
+       <div class="project-card-wrapper">
+        <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-project="project6" style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;"><img src="./websiteimages/projectcard6.png" alt="Random Things" class="w-full h-full object-cover" style="filter: brightness(1);" onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
          <div class="project-title">
           <div class="project-title-arrow">
            →
@@ -1412,7 +1543,6 @@
     <footer class="py-3 px-6 text-center" style="background-color: #000000;">
      <p style="color: #ffffff; font-size: 10px;">© 2024 My Portfolio. All rights reserved.</p>
     </footer>
-  <!--WIND TURBINE PAGE ABOVE-->
     
 
 
@@ -1787,6 +1917,7 @@ function updateActiveNav() {
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae239c4720d16a2',t:'MTc2NTc2Mjc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
