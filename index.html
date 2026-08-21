@@ -220,6 +220,11 @@
       visibility: visible;
       transition: opacity 0.3s ease, visibility 0s;
     }
+    @media (min-width: 1024px) {
+  #app {
+    zoom: 1.25;
+  }
+}
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -890,8 +895,9 @@
        </div><!-- Right Side - Two Images Stacked -->
        <div class="flex flex-col gap-4"><img src="./websiteimages/rocketry3.png" alt="Rocket Component" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"> <img src="./websiteimages/rocketry4.png" alt="Rocket Design" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"> <!-- Additional text below second image -->
         <div class="mt-4">
-         <p class="text-sm leading-relaxed" style="color: #2d3748;">Due to how the rocket is attached to the parachute during deployment, the fin opposite to the eye-bolt hole of the front-centering ring will always strike the ground first at landing. I conducted FEA on this fin to understand its landing impact.</p>
-         <p class="text-sm leading-relaxed mt-2" style="color: #2d3748;">To compare cost, I included all significant middle-end materials to compare with a non-certificate rocket and recorded a percentage difference of <span style="color: #ff0000; font-weight: bold;">12%</span> in favor of the 3D-printed fabrication.</p>
+         <p class="text-sm leading-relaxed" style="color: #2d3748;">To compare cost, I included all significant middle-end materials to compare with a non-certificate rocket and recorded a percentage difference of <span style="color: #ff0000; font-weight: bold;">12%</span> in favor of the 3D-printed fabrication.</p>
+         <p class="text-sm leading-relaxed mt-2" style="color: #2d3748;">I eventually wanted to perform FEA on the design, but due to how FDM printing works, it would be hard to produce reliable results. This is when I transitioned to material such as plywood and ABS. Due to how the rocket is attached to the parachute during deployment, the fin opposite to the eye-bolt hole of the front-centering ring will always strike the ground first at landing. I conducted FEA on this fin to analyze its landing impact. </p>
+
         </div>
        </div>
       </div>
@@ -997,7 +1003,7 @@
      <div class="max-w-3xl mx-auto">
       <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Text Content and Image -->
        <div>
-        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">During summer 2026, I designed a computer tower for an ATX motherboard using <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span>.</p><!-- New image below text -->
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">During Summer 2026, I designed a computer tower for an ATX motherboard using <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span>.</p><!-- New image below text -->
         <div class="mt-4"><img src="./websiteimages/atxcase1.png" alt="Radial Engine Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
         </div>
        </div><!-- Right Side - Image -->
@@ -1111,7 +1117,7 @@
        <div><img src="./websiteimages/esim1.png" alt="Epidemic Simulation" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
        </div><!-- Right Side - Text Content -->
        <div>
-        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">In spring 2026, I designed 36 sheet metal components for different application usages.</p>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">In Spring 2026, I designed 36 sheet metal components for different application usages.</p>
         <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">Parts were developed on <span style="color: #ff0000; font-weight: bold;">Fusion 360</span> and <span style="color: #ff0000; font-weight: bold;">SOLIDWORKS</span> and include shelves, racks, and computer parts. The goal of this was to better understand sheet metal designs for manufacturing and assembly.</p>
        </div>
       </div>
@@ -1922,7 +1928,6 @@ function updateActiveNav() {
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae239c4720d16a2',t:'MTc2NTc2Mjc1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
 
 
 
