@@ -86,32 +86,21 @@
   position: relative;
   color: #ffffff;
   text-decoration: none;
+  display: inline-block;
+  transition: color 0.25s ease, transform 0.25s ease;
+    font-size: 14px !important;
 }
 
-/* underline (hidden by default) */
+/* Hover animation */
+.nav-link:hover {
+  color: #fc2d61 !important;
+  transform: scale(1.30);
+}
+
+/* No underline */
 .nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  height: 2px;
-  background-color: #ffffff;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
+  display: none;
 }
-
-/* hover underline */
-.nav-link:hover::after {
-  transform: scaleX(1);
-}
-
-/* ACTIVE PAGE underline (always visible) */
-.nav-link.active::after {
-  transform: scaleX(1);
-}
-
     
     .page {
       display: none;
@@ -458,7 +447,9 @@
       <p class="text-center" style="color: #2d3748; font-size: 14px; margin-bottom: 35px;">Click on a picture to learn more!</p><!-- Filter Buttons -->
       <div class="flex justify-center gap-3 mb-3"><button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="all" style="background-color: #000000; color: #ffffff; opacity: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">ALL</button> <button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="personal" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">PERSONAL</button> <button class="black-btn filter-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition" data-filter="teams" style="background-color: #000000; color: #ffffff; opacity: 0.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;" onmouseover="this.style.backgroundColor='#333333'" onmouseout="this.style.backgroundColor='#000000'">STUDENT TEAMS</button>
       </div><!-- Project Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mx-auto"> <!--max-w-nx1, n changes size of project cards-->
+      <div id="project-grid"
+     class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mx-auto"
+     style="align-content: start;"><!--max-w-nx1, n changes size of project cards-->
         <!-- Project Card 1 -->
 <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="teams" data-project="project1" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
   <img src="./websiteimages/projectcard1.png" alt="Autonomous Robot" class="w-full h-full object-cover">
@@ -510,17 +501,7 @@
 </div>
 
        <!-- Project Card 6 -->
-<div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="random" data-project="project6" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
-  <img src="./websiteimages/projectcard6.png" alt="Autonomous Robot" class="w-full h-full object-cover">
-
-  <div class="project-title">
-    <div class="project-name">RANDOM THINGS</div>
-    <div class="project-category">Other</div>
-  </div>
-</div>
-
-        <!-- Project Card 7 -->
-   <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="teams" data-project="project7" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
+<div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="teams" data-project="project7" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
   <img src="./websiteimages/projectcard7.png" alt="Autonomous Robot" class="w-full h-full object-cover">
 
   <div class="project-title">
@@ -529,21 +510,77 @@
   </div>
 </div>
 
-
-       <!-- Coming Soon Card - Slot 8 -->
-       <div class="project-card overflow-hidden shadow-lg coming-soon-card" data-category="all" style="background-color: #9ca3af; border: 2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; cursor: default; position: relative;"><!-- Vignette overlay -->
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; box-shadow: inset 0 0 60px 20px rgba(0, 0, 0, 0.5); pointer-events: none; z-index: 1;"></div>
-        <div class="coming-soon-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.7); opacity: 0; transition: opacity 0.3s ease; z-index: 2;">
-         <h3 class="text-sm font-bold" style="color: #ffffff;">COMING SOON</h3>
-        </div>
-       </div>
-              <!-- Project Card 9 -->
-<div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="personal" data-project="project5" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
+        <!-- Project Card 7 -->
+   <div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="personal" data-project="project5" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
   <img src="./websiteimages/projectcard5.png" alt="Autonomous Robot" class="w-full h-full object-cover">
 
   <div class="project-title">
     <div class="project-name">SHEET METAL WORKSHOP</div>
     <div class="project-category">Personal</div>
+  </div>
+</div>
+
+
+       <!-- Coming Soon Card - Slot 8 -->
+<!-- Coming Soon Card - Slot 8 -->
+<div class="project-card overflow-hidden shadow-lg coming-soon-card"
+     data-category="all"
+     style="
+       border: 2px solid #e2e8f0;
+       transition: all 0.5s ease;
+       aspect-ratio: 1/0.75;
+       cursor: default;
+       position: relative;
+     ">
+
+  <!-- Coming Soon Image -->
+  <img
+    src="./websiteimages/projectcard8.png"
+    alt="Coming Soon Project"
+    class="w-full h-full object-cover"
+  >
+
+  <!-- Vignette -->
+  <div style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 60px 20px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1;
+  "></div>
+
+  <!-- Coming Soon Hover Overlay -->
+  <div class="coming-soon-overlay" style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+  ">
+    <h3 class="text-sm font-bold" style="color: #ffffff;">
+      COMING SOON
+    </h3>
+  </div>
+
+</div>
+              <!-- Project Card 9 -->
+<div class="project-card overflow-hidden shadow-lg cursor-pointer" data-category="random" data-project="project6" style="background-color:#f7fafc; border:2px solid #e2e8f0; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative;">
+  <img src="./websiteimages/projectcard6.png" alt="Autonomous Robot" class="w-full h-full object-cover">
+
+  <div class="project-title">
+    <div class="project-name">RANDOM THINGS</div>
+    <div class="project-category">Other</div>
   </div>
 </div>
 
@@ -1883,7 +1920,7 @@
       
       // Reset filter to 'all' when entering projects page
       if (pageName === 'projects') {
-        filterProjects('all');
+        filterProjects('all', false);
       }
       
       // Update active nav link
@@ -1916,43 +1953,298 @@ function updateActiveNav() {
     });
 
     // Filter functionality
-    let currentFilter = 'all';
-    
-    function filterProjects(filter) {
-      currentFilter = filter;
-      // Only target project cards on the projects page, not in "Other Projects" sections
-      const projectsPage = document.getElementById('projects-page');
-      const projectCards = projectsPage.querySelectorAll('.project-card');
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      
-      // Update button styles
-      filterButtons.forEach(btn => {
-        if (btn.dataset.filter === filter) {
-          btn.style.backgroundColor = '#000000';
-          btn.style.color = '#ffffff';
-          btn.style.opacity = '1';
-        } else {
-          btn.style.backgroundColor = '#000000';
-          btn.style.color = '#ffffff';
-          btn.style.opacity = '0.5';
-        }
+let currentFilter = 'all';
+let projectGridHeight = 0;
+let filterAnimating = false;
+
+function filterProjects(filter, animate = true) {
+
+  const projectGrid = document.getElementById('project-grid');
+  const projectCards = [...projectGrid.querySelectorAll('.project-card')];
+  const filterButtons = document.querySelectorAll('.filter-btn');
+
+  if (!projectGrid) return;
+
+  if (animate && filter === currentFilter) return;
+
+  currentFilter = filter;
+
+  // Filter button appearance
+  filterButtons.forEach(btn => {
+    btn.style.opacity =
+      btn.dataset.filter === filter ? '1' : '0.5';
+  });
+
+
+  // =====================================================
+  // ENTERING PROJECT PAGE
+  // No animation
+  // =====================================================
+
+  if (!animate) {
+
+    projectCards.forEach(card => {
+
+      const shouldShow =
+        filter === 'all' ||
+        card.dataset.category === filter;
+
+      card.style.display = shouldShow ? '' : 'none';
+      card.style.opacity = shouldShow ? '1' : '0';
+
+      card.style.transform = '';
+      card.style.transition = 'none';
+
+      card.style.position = '';
+      card.style.left = '';
+      card.style.top = '';
+      card.style.width = '';
+      card.style.height = '';
+
+      card.style.pointerEvents =
+        shouldShow ? 'auto' : 'none';
+    });
+
+    requestAnimationFrame(() => {
+
+      if (filter === 'all') {
+        projectGridHeight = projectGrid.offsetHeight;
+
+        projectGrid.style.minHeight =
+          projectGridHeight + 'px';
+      }
+
+    });
+
+    return;
+  }
+
+
+  if (filterAnimating) return;
+
+  filterAnimating = true;
+
+  projectGrid.style.position = 'relative';
+
+
+  // =====================================================
+  // RECORD OLD GRID POSITIONS
+  // =====================================================
+
+  const oldPositions = new Map();
+
+  projectCards.forEach(card => {
+
+    if (card.style.display !== 'none') {
+
+      oldPositions.set(card, {
+        left: card.offsetLeft,
+        top: card.offsetTop,
+        width: card.offsetWidth,
+        height: card.offsetHeight
       });
-      
-      // Filter cards
-      projectCards.forEach(card => {
-        const category = card.dataset.category;
-        
-        if (filter === 'all' || category === filter) {
-          card.style.opacity = '1';
-          card.style.transform = 'scale(1)';
-          card.style.pointerEvents = 'auto';
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.8)';
-          card.style.pointerEvents = 'none';
-        }
-      });
+
     }
+
+  });
+
+
+  const disappearing = [];
+  const appearing = [];
+  const staying = [];
+
+
+  projectCards.forEach(card => {
+
+    const shouldShow =
+      filter === 'all' ||
+      card.dataset.category === filter;
+
+    const visible =
+      card.style.display !== 'none';
+
+
+    if (visible && !shouldShow) {
+      disappearing.push(card);
+    }
+
+    else if (!visible && shouldShow) {
+      appearing.push(card);
+    }
+
+    else if (visible && shouldShow) {
+      staying.push(card);
+    }
+
+  });
+
+
+  // =====================================================
+  // PIN DISAPPEARING CARDS
+  // =====================================================
+
+  disappearing.forEach(card => {
+
+    const old = oldPositions.get(card);
+
+    card.style.position = 'absolute';
+
+    card.style.left = old.left + 'px';
+    card.style.top = old.top + 'px';
+
+    card.style.width = old.width + 'px';
+    card.style.height = old.height + 'px';
+
+    card.style.margin = '0';
+    card.style.zIndex = '5';
+
+    card.style.pointerEvents = 'none';
+
+  });
+
+
+  // =====================================================
+  // PUT APPEARING CARDS INTO GRID
+  // =====================================================
+
+  appearing.forEach(card => {
+
+    card.style.display = '';
+
+    card.style.position = '';
+    card.style.left = '';
+    card.style.top = '';
+    card.style.width = '';
+    card.style.height = '';
+    card.style.margin = '';
+
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.65)';
+    card.style.transition = 'none';
+
+    card.style.pointerEvents = 'auto';
+
+  });
+
+
+  // Force browser to calculate new grid positions
+  projectGrid.offsetHeight;
+
+
+  // =====================================================
+  // POSITION STAYING CARDS OVER THEIR OLD LOCATIONS
+  // =====================================================
+
+  staying.forEach(card => {
+
+    const old = oldPositions.get(card);
+
+    const newLeft = card.offsetLeft;
+    const newTop = card.offsetTop;
+
+    const deltaX = old.left - newLeft;
+    const deltaY = old.top - newTop;
+
+    card.style.transition = 'none';
+
+    card.style.transform =
+      `translate(${deltaX}px, ${deltaY}px)`;
+
+  });
+
+
+  // Force starting positions to render
+  projectGrid.offsetHeight;
+
+
+  // =====================================================
+  // EVERYTHING ANIMATES SIMULTANEOUSLY
+  // =====================================================
+
+  requestAnimationFrame(() => {
+
+    disappearing.forEach(card => {
+
+      card.style.transition =
+        'transform 0.25s ease-out, opacity 0.25s ease-out';
+
+      card.style.transform = 'scale(0.65)';
+      card.style.opacity = '0';
+
+    });
+
+
+    appearing.forEach(card => {
+
+      card.style.transition =
+        'transform 0.25s ease-out, opacity 0.25s ease-out';
+
+      card.style.transform = 'scale(1)';
+      card.style.opacity = '1';
+
+    });
+
+
+    staying.forEach(card => {
+
+      card.style.transition =
+        'transform 0.25s ease-out';
+
+      card.style.transform =
+        'translate(0px, 0px)';
+
+    });
+
+  });
+
+
+  // =====================================================
+  // CLEANUP
+  // =====================================================
+
+  setTimeout(() => {
+
+    disappearing.forEach(card => {
+
+      card.style.display = 'none';
+
+      card.style.transition = 'none';
+      card.style.transform = '';
+      card.style.opacity = '0';
+
+      card.style.position = '';
+      card.style.left = '';
+      card.style.top = '';
+      card.style.width = '';
+      card.style.height = '';
+      card.style.margin = '';
+      card.style.zIndex = '';
+
+    });
+
+
+    appearing.forEach(card => {
+
+      card.style.transition = 'none';
+      card.style.transform = '';
+      card.style.opacity = '1';
+
+    });
+
+
+    staying.forEach(card => {
+
+      card.style.transition = 'none';
+      card.style.transform = '';
+
+    });
+
+
+    filterAnimating = false;
+
+  }, 250);
+
+}
     
     // Add click handlers to filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
