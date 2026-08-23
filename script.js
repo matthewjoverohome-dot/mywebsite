@@ -580,11 +580,12 @@ banner.style.transform =
     handleParallax();
 
     // Add click handlers to all logo images
-    document.querySelectorAll('.logo-container').forEach(logo => {
-      logo.addEventListener('click', () => {
-        showPage('home');
-      });
-    });
+// Make logo go to homepage
+document.querySelectorAll('.logo-container').forEach(logo => {
+  logo.addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+});
 
     // Add hover effect to coming soon card
     const comingSoonCard = document.querySelector('.coming-soon-card');
