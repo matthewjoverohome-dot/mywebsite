@@ -15,20 +15,32 @@
 
 let currentPage;
 
-const fileName = window.location.pathname.split('/').pop();
+const path = window.location.pathname;
 
-if (fileName === 'resume.html') {
+if (path.startsWith('/resume')) {
+
     currentPage = 'resume';
-} else if (fileName === 'projects.html') {
+
+} else if (path.startsWith('/projects')) {
+
     currentPage = 'projects';
-} else if (fileName === 'about.html') {
+
+} else if (path.startsWith('/about')) {
+
     currentPage = 'about';
-} else if (fileName === 'contact.html') {
+
+} else if (path.startsWith('/contact')) {
+
     currentPage = 'contact';
-} else if (fileName.startsWith('project')) {
+
+} else if (path.startsWith('/portfolio')) {
+
     currentPage = null;
+
 } else {
+
     currentPage = 'home';
+
 }
 
     async function onConfigChange(config) {
@@ -583,7 +595,7 @@ banner.style.transform =
 // Make logo go to homepage
 document.querySelectorAll('.logo-container').forEach(logo => {
   logo.addEventListener('click', () => {
-    window.location.href = 'index.html';
+    window.location.href = '/';
   });
 });
 
