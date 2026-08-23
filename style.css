@@ -1,0 +1,221 @@
+
+
+    .project-card { 
+  position: relative;  /* make sure this exists */
+}
+
+.project-title{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  text-align: center;
+  color: #ffffff;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.project-name{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.project-category{
+  font-size: 11px;
+  font-style: italic;
+  color: #cbd5e1;
+}
+
+
+    /* ===== Shared Black Button Hover Animation ===== */
+.black-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.black-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+.file-nav-link {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    transform: scale(1);
+}
+
+.file-nav-link:hover {
+    color: #ff0000 !important;
+    transform: scale(1.1);
+}
+
+    .logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.6));
+}
+
+    body {
+      box-sizing: border-box;
+    }
+    
+    .banner-container {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    .banner-container.bannersmall {
+      height: 200px
+    }
+    
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+
+.nav-link {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.25s ease, transform 0.25s ease;
+    font-size: 14px !important;
+}
+
+/* Hover animation */
+.nav-link:hover {
+  color: #fc2d61 !important;
+  transform: scale(1.30);
+}
+.nav-link.active {
+  color: #fc2d61 !important;
+}
+/* No underline */
+.nav-link::after {
+  display: none;
+}
+    
+    .page {
+      display: none;
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+      .smooth-transition {
+      transition: all 0.3s ease;
+    }
+    
+.page.active {
+  display: flex;          
+  flex-direction: column; 
+  min-height: 100vh;      
+  animation: panIn 0.6s ease-out forwards;
+}
+
+    
+    @keyframes panIn {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .project-card {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .project-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .project-card:hover .project-title {
+      opacity: 1;
+    }
+    
+    .project-card-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-label {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 8px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 0;
+      flex-shrink: 0;
+      border: 2px solid #e2e8f0;
+      border-top: none;
+    }
+    
+    .project-title-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      pointer-events: none;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0s;
+    }
+    
+    .project-title-arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      color: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s 0.3s;
+    }
+    
+    .project-card:hover .project-title-text {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s 0.3s;
+    }
+    
+    .project-card:hover .project-title-arrow {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0s;
+    }
+    @media (min-width: 1024px) {
+  #app {
+    zoom: 1.25;
+  }
+}

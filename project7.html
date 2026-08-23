@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wind Turbine - Engineering Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="h-full">
+
+<div id="app" class="w-full h-full overflow-auto"
+     style="background-color: #ffffff; position: relative;">
+     <div id="project7-page" class="page active"><!-- Full Width Banner -->
+    <div class="banner-container bannersmall"><img src="https://hackaday.com/wp-content/uploads/2018/03/gears-featured.jpg" alt="Banner" class="banner-image" style="filter: brightness(0.5);" onerror="this.src=''; this.alt='Banner image failed to load'; this.style.display='none';"> <!-- Navigation overlaid on banner -->
+     <nav style="position: absolute; top: 0; left: 0; right: 0; z-index: 50; background-color: transparent;">
+      <div class="max-w-6xl mx-auto px-6 py-3">
+       <div class="flex justify-between items-center" style="padding-right: 80px;"><!-- Logo on the left -->
+        <div class="logo-container cursor-pointer" style="padding-left: 20px;"><img src="./websiteimages/mylogo.png" alt="Logo" class="logo-img" style="height: 35px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" onerror="this.style.display='none';">
+        </div><!-- Navigation links on the right -->
+<div class="flex gap-6">
+
+    <a href="test.html"
+       class="nav-link text-xs smooth-transition cursor-pointer"
+       style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Home
+    </a>
+
+    <a href="resume.html"
+       class="nav-link text-xs smooth-transition cursor-pointer"
+       style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Resume
+    </a>
+
+    <a href="projects.html"
+       class="nav-link text-xs smooth-transition cursor-pointer"
+       style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Projects
+    </a>
+
+    <a href="about.html"
+       class="nav-link text-xs smooth-transition cursor-pointer"
+       style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        About
+    </a>
+
+    <a href="contact.html"
+       class="nav-link text-xs smooth-transition cursor-pointer"
+       style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Contact
+    </a>
+
+</div>
+       </div>
+      </div>
+     </nav>
+     <div class="absolute inset-0 flex items-center justify-center" style="pointer-events: none;">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">Wind Turbine</h1>
+     </div>
+    </div><!-- Project Content Section -->
+    <section class="py-12 px-6" style="background-color: #ffffff;">
+     <div class="max-w-3xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 items-start"><!-- Left Side - Image -->
+       <div><img src="./websiteimages/turbine0.png" alt="Sensitivity Analysis" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+       </div><!-- Right Side - Text Content -->
+       <div>
+        <p class="text-sm leading-relaxed mb-4" style="color: #2d3748;">I designed a wind turbine blade and tower with an engineering team. We decided to implement three blades around this hub with the <span style="color: #ff0000; font-weight: bold;">NACA 4424 airfoil</span> and an angle of attack of 10 degrees. This airfoil decision was to increase structural strength for a smaller-scale wind turbine more vulnerable to vigorous winds.</p>
+       </div>
+      </div><!-- Additional Image Below -->
+      <div class="mt-6"><img src="./websiteimages/turbine1.png" alt="Additional Analysis Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+      </div><!-- Description Text Below Image -->
+      <div class="mt-4">
+  <!-- Additional Image Below Text -->
+      <div class="mt-6 flex justify-center">
+      </div>
+            <p class="mt-6 text-sm leading-relaxed" style="color: #2d3748;">Our tower design consisted of engineered wood binded with fasteners and epoxy (machine tools were also used for part preparation). Our design methodology was to prevent significant deformation during the stiffness test. I tested the design in Ansys with a mesh convergence study to predict our stiffness result within ~5.4%. Testing results came out with a stiffness of 15 N per mm, winning 1st place in the stiffness category.  </p>
+      <div class="mt-6"><img src="./websiteimages/turbine4.png" alt="Additional Analysis Detail" class="w-full h-auto shadow-lg" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     </div>
+    </section><!-- Additional Bottom Image Section -->
+    <section class="px-6" style="background-color: #ffffff; padding-top: 0; padding-bottom: 24px; margin-top: -20px;">
+<!-- TOP SKILLS UTILIZED -->
+<div class="w-full max-w-3xl mx-auto my-8 px-6">
+
+  <div class="bg-black text-white text-center font-bold text-xl py-1 mb-4">
+    TOP SKILLS UTILIZED
+  </div>
+
+  <div class="grid grid-cols-2 gap-x-4 gap-y-3">
+
+    <div class="bg-black text-white text-center font-bold text-base py-1">
+      WOODWORK
+    </div>
+
+    <div class="bg-black text-white text-center font-bold text-base py-1">
+      SOLIDWORKS
+    </div>
+
+    <div class="bg-black text-white text-center font-bold text-base py-1">
+      ANSYS
+    </div>
+
+    <div class="bg-black text-white text-center font-bold text-base py-1">
+      STRUCTURAL DESIGN
+    </div>
+
+  </div>
+    </section><!-- Other Projects Banner Section -->
+    <section class="other-projects-banner" style="background-color: #ffffff; padding: 0; margin: 0; width: 100%; position: relative; box-sizing: border-box; height: 200px; overflow: hidden;"><img src="./websiteimages/otherprojectsbanner.png" alt="Other Projects" class="banner-parallax" style="
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  will-change: transform;
+  filter: brightness(0.5);
+" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10;">
+      <h2 class="text-2xl md:text-4xl font-bold tracking-wide" style="color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.7);">Other Projects</h2>
+     </div>
+    </section><!-- Other Projects Grid -->
+    <section class="py-8 px-6" style="background-color: #ffffff;">
+  <div class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 gap-4">
+
+      <!-- AUTONOMOUS ROBOT -->
+      <div class="project-card-wrapper">
+
+        <a href="project1.html"
+           class="project-card overflow-hidden shadow-lg cursor-pointer"
+           style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative; text-decoration: none; color: inherit;">
+
+          <img src="./websiteimages/projectcard1.png"
+               alt="Autonomous Robot"
+               class="w-full h-full object-cover"
+               onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+
+          <div class="project-title">
+            <div class="project-title-arrow">
+              →
+            </div>
+          </div>
+
+        </a>
+
+        <div class="project-label">
+          Autonomous Robot
+        </div>
+
+      </div>
+
+
+      <!-- ATX CASE DESIGN -->
+      <div class="project-card-wrapper">
+
+        <a href="project4.html"
+           class="project-card overflow-hidden shadow-lg cursor-pointer"
+           style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative; text-decoration: none; color: inherit;">
+
+          <img src="./websiteimages/projectcard4.png"
+               alt="ATX Case Design"
+               class="w-full h-full object-cover"
+               onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+
+          <div class="project-title">
+            <div class="project-title-arrow">
+              →
+            </div>
+          </div>
+
+        </a>
+
+        <div class="project-label">
+          ATX Case Design
+        </div>
+
+      </div>
+
+
+      <!-- HIGH-POWER ROCKET -->
+      <div class="project-card-wrapper">
+
+        <a href="project3.html"
+           class="project-card overflow-hidden shadow-lg cursor-pointer"
+           style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative; text-decoration: none; color: inherit;">
+
+          <img src="./websiteimages/projectcard3.png"
+               alt="High-Power Rocket Design"
+               class="w-full h-full object-cover"
+               onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+
+          <div class="project-title">
+            <div class="project-title-arrow">
+              →
+            </div>
+          </div>
+
+        </a>
+
+        <div class="project-label">
+          High-power Rocket Design
+        </div>
+
+      </div>
+
+
+      <!-- TUTORING -->
+      <div class="project-card-wrapper">
+
+        <a href="project9.html"
+           class="project-card overflow-hidden shadow-lg cursor-pointer"
+           style="background-color: #f7fafc; border: 2px solid #e2e8f0; border-bottom: none; transition: all 0.5s ease; aspect-ratio: 1/0.75; flex-shrink: 0; position: relative; text-decoration: none; color: inherit;">
+
+          <img src="./websiteimages/projectcard9.jpg"
+               alt="Tutoring"
+               class="w-full h-full object-cover"
+               style="filter: brightness(1);"
+               onerror="this.src=''; this.alt='Project image failed to load'; this.style.display='none';">
+
+          <div class="project-title">
+            <div class="project-title-arrow">
+              →
+            </div>
+          </div>
+
+        </a>
+
+        <div class="project-label">
+          Tutoring
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section><!-- Back Button Section -->
+<!-- Back Button Section -->
+<section class="py-6 px-6 text-center" style="background-color: #ffffff;">
+
+    <a href="projects.html"
+       class="black-btn px-4 py-2 text-xs font-bold tracking-wide rounded-full smooth-transition"
+       style="
+           background-color: #000000;
+           color: #ffffff;
+           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+           text-decoration: none;
+           cursor: pointer;
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           margin: 0 auto;
+       "
+       onmouseover="this.style.backgroundColor='#333333'"
+       onmouseout="this.style.backgroundColor='#000000'">
+        BACK TO PROJECTS
+    </a>
+
+</section><!-- Contact Bar -->
+    <section class="py-4 px-6" style="background-color: #e5e7eb;">
+     <div class="max-w-6xl mx-auto flex justify-between items-center"><a href="https://www.linkedin.com/in/mzjovero/" target="_blank" rel="noopener noreferrer"> <img src="./websiteimages/linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;" onerror="this.style.display='none';"> </a>
+      <p style="color: #000000; font-size: 10px; font-family: 'Montserrat', sans-serif;">Email: mzjovero06@gmail.com</p>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-3 px-6 text-center" style="background-color: #000000;">
+     <p style="color: #ffffff; font-size: 10px;">© 2026 My Portfolio. All rights reserved.</p>
+    </footer>
+    </div>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
